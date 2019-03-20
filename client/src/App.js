@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import AddCity from './components/AddCity.js';
+import Weather from './components/Weather.js';
 
 class App extends Component {
   constructor(props) {
@@ -58,6 +59,7 @@ class App extends Component {
           handleInputChange={this.handleInputChange}
           newCity={this.state.newCity}
         />
+        <Weather cities={this.state.cities} />
       </div>
     );
   }
