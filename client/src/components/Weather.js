@@ -10,7 +10,7 @@ const Weather = ({ cities, handleSelectCity }) => {
       >
         <option>Select the city</option>
         {cities.length > 0 &&
-          cities.map((city) => <option key={city}>{city}</option>)}
+          cities.map((city, idx) => <option key={idx}>{city}</option>)}
       </select>
     </div>
   );
