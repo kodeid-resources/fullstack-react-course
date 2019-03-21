@@ -6,7 +6,9 @@
   "scripts": {
     "client": "npm start --prefix client",
     "server": "nodemon server",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "start": "node server",
+    "heroku-postbuild": "cd client && npm install && npm run build"
   },
   "keywords": [],
   "author": "Riza Fahmi <rizafahmi@gmail.com> (https://rizafahmi.com)",
