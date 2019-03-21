@@ -5,7 +5,7 @@ let db;
 const getDB = async (env) => {
   if (db) return db;
   try {
-    if (env !== 'production') {
+    if (env.NODE_ENV !== 'production') {
       db = await massive({
         host: '127.0.0.1',
         port: 5432,
