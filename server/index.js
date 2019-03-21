@@ -10,15 +10,17 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.use('/api/cities', require('../api/cities.js'));
-app.use('/api/weather', require('../api/weather.js'));
+app.use(express.static(path.join(__dirname, '../client/build')));
 
 if (ENV === 'production') {
-app.use(express.static(path.join(__dirname, '../client/build')));
-app.use((req, res) => {
-  res.sendFile(path.join(__dirname, '../client/build/index.html'));
-});
+  app.use(express.static(path.join(__dirname, '../client/build')));
+  // app.use((req, res) => {
+  //   res.sendFile(path.join(__dirname, '../client/build/index.html'));
+  // });
 }
+
+app.use('/api/cities', require('../api/cities.js'));
+app.use('/api/weather', require('../api/weather.js'));
 
 app.listen(PORT, () => {
   console.info(`Server running at http://localhost:${PORT}!`);
