@@ -1,4 +1,5 @@
 require('dotenv').config();
+const path = require('path');
 const express = require('express');
 const getWeatherByCity = require('../models/weather.js');
 
@@ -13,10 +14,10 @@ app.use('/api/cities', require('../api/cities.js'));
 app.use('/api/weather', require('../api/weather.js'));
 
 if (ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '../client/build')));
-  // app.use((req, res) => {
-  //   res.sendFile(path.join(__dirname, '../client/build/index.html'));
-  // });
+app.use(express.static(path.join(__dirname, '../client/build')));
+app.use((req, res) => {
+  res.sendFile(path.join(__dirname, '../client/build/index.html'));
+});
 }
 
 app.listen(PORT, () => {
