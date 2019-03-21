@@ -22,7 +22,7 @@ app.use('/api/cities', require('../api/cities.js'));
 app.use('/api/weather', require('../api/weather.js'));
 
 app.listen(PORT, () => {
-  console.info(`Server running at http://localhost:${PORT}!`);
+  console.log(`Server running at http://localhost:${PORT}!`);
 });
 
 module.exports = app;
