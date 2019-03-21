@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node server",
     "client": "npm start --prefix client",
     "server": "nodemon server",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "start": "node server",
     "heroku-postbuild": "cd client && npm install && npm run build"
   },
   "keywords": [],
