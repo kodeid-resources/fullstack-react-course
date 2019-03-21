@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import AddCity from './components/AddCity.js';
 import Weather from './components/Weather.js';
