@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import AddCity from './components/AddCity.js';
 import Weather from './components/Weather.js';
+import ShowWeather from './components/ShowWeather.js';
 
 class App extends Component {
   constructor(props) {
@@ -49,6 +50,18 @@ class App extends Component {
     e.preventDefault();
     this.addCity(this.state.newCity);
   };
+  handleSelectCity = (e) => {
+    this.getWeather(e.target.value);
+  };
+  getWeather = (city) => {
+    fetch(`/api/weather/${city}`)
+      .then((res) => res.json())
+      .then((weather) => {
+        this.setState({
+          weather
+        });
+      });
+  };
   render() {
     return (
       <div className="container text-center mx-auto my-20 text-grey-darkest">
@@ -59,7 +72,11 @@ class App extends Component {
           handleInputChange={this.handleInputChange}
           newCity={this.state.newCity}
         />
-        <Weather cities={this.state.cities} />
+        <Weather
+          handleSelectCity={this.handleSelectCity}
+          cities={this.state.cities}
+        />
+        {this.state.weather && <ShowWeather data={this.state.weather} />}
       </div>
     );
   }
