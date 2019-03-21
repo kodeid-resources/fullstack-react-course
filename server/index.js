@@ -10,12 +10,8 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-
 if (ENV === 'production') {
   app.use(express.static(path.join(__dirname, '../client/build')));
-  // app.use((req, res) => {
-  //   res.sendFile(path.join(__dirname, '../client/build/index.html'));
-  // });
 }
 
 app.use('/api/cities', require('../api/cities.js'));
